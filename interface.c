@@ -3,21 +3,21 @@
 #include <string.h>
 #include <unistd.h>
 #include <ctype.h>
-
-#define READ 0
-#define WRITE 1
+#include <sys/types.h> 
+#include <sys/stat.h>
 
 int main() {
-    int fds[2];
-    int fds2[2];
-    pipe(fds);
-    pipe(fds2);
+	mkfifo("pipe1", 0644);
+	mkfifo("pipe2", 0644);
+
+	int p1 = open(pipe1, O_WRONGLY);
+
 
     int f = fork();
     if(f) { 
         // close pipes in parent
-        close( fds[READ] ); 
-        close( fds2[WRITE] );
+        // close( fds[READ] ); 
+        // close( fds2[WRITE] );
 
         char line[4096];
         while(1) {

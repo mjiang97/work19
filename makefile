@@ -1,12 +1,15 @@
-all: work18.o
-	gcc -o program work18.o
+all: interface.o worker.o
+	gcc -o interface interface.o
+	gcc -o worker worker.o
 
-work18.o: work18.c
-	gcc -c work18.c
 
-run:
-	./program
+interface.o: interface.c
+	gcc -c interface.c
+
+worker.o: worker.c
+	gcc -c worker.c
 
 clean: 
 	rm *.o
-	rm program
+	rm interface
+	rm worker
