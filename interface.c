@@ -20,7 +20,7 @@ int main() {
         // send input to worker program
         printf("Input: ");
         fgets(line, sizeof(line), stdin);
-		sscanf(line, "%s", line);
+	sscanf(line, "%s", line);
         write(p1, line, sizeof(line));
         // wait and receive response
         read(p2, line, sizeof(line));
